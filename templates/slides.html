@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}{{ page.title }} | {{ SITENAME }}{% endblock %}
+{% block metadesc %}{{ page.description|e }}{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<div class="article-content">
+    {{ page.content }}
+</div>
+{% endblock %}

@@ -1,12 +1,9 @@
-{% extends 'base.html' %}
-{% block title %}Posts tagged with: {{ tag }}{% endblock %}
-{% block metadesc %}All posts on {{ SITENAME }} tagged with {{ tag }}{% endblock %}
-
-{% block header %}{% endblock %}
+{% extends "base.html" %}
+{% block title %}{{ SITENAME }} &middot; articles in the "{{ category }}" category{% endblock %}
 
 {% block content %}
 
-  <h1 class="article-title">Posts tagged with: {{ tag }}</h1>
+  <h1 class="article-title">Posts under the Category: {{ category }}</h1>
   <hr class="small"></hr>
   {% for article in articles %}
     {% if article.status != 'draft' %}

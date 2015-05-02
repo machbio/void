@@ -25,8 +25,10 @@
     <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <!-- CSS
   ================================================== -->
+    <!--
     {% assets filters="cssmin", output="css/style.min.css", "css/base.css", "css/skeleton.css", "css/layout.css", "css/void.css", "css/pygment.css" %}
     <link rel="stylesheet" href="/{{ ASSET_URL }}"> {% endassets %}
+    -->
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"> {% if FEED_ALL_ATOM %}
     <!-- Feeds
   ================================================== -->
@@ -59,14 +61,7 @@
 <body>
     <!-- Primary Page Layout
   ================================================== -->
-    <div class="container">
-        {% include 'navbar.html' %}
-        <section id="content" class="twelve columns">
-            {% block content %}{% endblock %}
-        </section>
-        {% include 'footer.html' %}
-    </div>
-    <!-- container -->
+    {% block content %}{% endblock %}
     {% include "analytics.html" %}
 </body>
 <!-- End body -->

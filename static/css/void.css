@@ -58,7 +58,7 @@ nav {
 
 .navbar {
 	display: block;
-	background-color: #fff;
+	background-color: #FFF;
 	/*min-height: 50px;*/
 	/*line-height: 50px;  vertically center text within navbar */
 	width: 100%;
@@ -89,7 +89,9 @@ If someone sees this comment and knows the right way to do it,
 please email me.
 */
 }
-.navbar-brand { float: left; }
+.navbar-brand { 
+	float: left;
+	 }
 .navbar-brand h1 {
 	letter-spacing: -2px;
 	margin-top: 0px;

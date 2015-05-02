@@ -1,70 +1,61 @@
-{% extends 'base.html' %}
-{% block title %}{{ article.title }}{% endblock %}
-{% block metadesc %}{{ article.description|e }}{% endblock %}
-{% block affiliate %}{{ article.affiliate_link|safe }}{% endblock %}
-
-{% block header %}
+{% extends 'base.html' %} {% block title %}{{ article.title }}{% endblock %} {% block metadesc %}{{ article.description|e }}{% endblock %} {% block affiliate %}{{ article.affiliate_link|safe }}{% endblock %} {% block header %}
 <!-- Extra Header for IPython Notebooks
 ================================================== -->
-  {% if EXTRA_HEADER %}
-    {{ EXTRA_HEADER }}
-  {% endif %}
-  <link href="//cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
-  <style type="text/css">
-    #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif;  width:500px;}
-    /*
+{% if EXTRA_HEADER %} {{ EXTRA_HEADER }} {% endif %}
+<link href="//cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+#mc_embed_signup {
+    background: #fff;
+    clear: left;
+    font: 14px Helvetica, Arial, sans-serif;
+    width: 500px;
+}
+/*
       Add your own MailChimp form style overrides in your site stylesheet or in this style block.
       We recommend moving this block and the preceding CSS link to the HEAD of your HTML file.
      */
-  </style>
-{% endblock %}
-
-{% block twittercards %}
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:site" content="@{{ TWITTER_NAME }}">
-  <meta name="twitter:creator" content="@{{ TWITTER_NAME }}">
-  <meta name="twitter:domain" content="{{ DOMAIN }}">
-  <meta name="twitter:image" content="{{ SITEURL }}{{ AVATAR }}">
-  <meta name="twitter:title" content="{{ article.title }}">
-  <meta name="twitter:description" content="{{ article.description|e }}">
-{% endblock %}
-
-{% block content %}
-
-  <!-- Article Headers
+</style>
+{% endblock %} {% block twittercards %}
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@{{ TWITTER_NAME }}">
+<meta name="twitter:creator" content="@{{ TWITTER_NAME }}">
+<meta name="twitter:domain" content="{{ DOMAIN }}">
+<meta name="twitter:image" content="{{ SITEURL }}{{ AVATAR }}">
+<meta name="twitter:title" content="{{ article.title }}">
+<meta name="twitter:description" content="{{ article.description|e }}"> {% endblock %} {% block content %}
+<!-- Article Headers
   ================================================================== -->
-  <h1 class="article-title"><a href="/{{ article.url }}" title="Permalink to {{ article.title }}">{{article.title}}</a></h1>
-  <h5 class="article-date"><strong>{{ article.date|strftime('%B %d, %Y') }}</strong>
+<h1 class="article-title"><a href="/{{ article.url }}" title="Permalink to {{ article.title }}">{{article.title}}</a></h1>
+<h5 class="article-date"><strong>{{ article.date|strftime('%B %d, %Y') }}</strong>
     {% if article.tags %} | {% for tag in article.tags %}
         <a class="tag" href="/{{ tag.url }}" rel="tag" title="Posts tagged with {{ article.tag }}">{{ tag }}</a>
       {% endfor %}
     {% endif %}
   </h5>
-  <hr class="small"></hr>
-
-  <!-- Article Content
+<hr class="small"></hr>
+<!-- Article Content
   ================================================================== -->
-  <div class="article-content">
+<div class="article-content">
     {{ article.content }}
-  </div>
-
-  <div class="article-sharing">
+</div>
+<div class="article-sharing">
     <hr class="small"></hr>
     {% if not TWITTER_NAME %}
     <!-- Twitter Sharing
     ================================================================== -->
-    <a href="https://twitter.com/share" class="twitter-share-button" data-via="{{ TWITTER_NAME }}">Tweet</a>
+    <a href="https://twitter.com/share" class="twitter-share-button" data-via="{{ TWITTER_NAME }}">Tweet</a> {% endif %} {% if MAILCHIMP %} {% include 'mailchimp.html' %} {% endif %}
+    <div> 
+    <i>Category : </i><a href="{{ SITEURL }}/category/{{ article.category|lower }}.html"> {{ article.category }}</a>
+    </div>
+    {% if article.prev_article %}
+    <p align="left"><i>Previous Post :</i> <a href="{{ SITEURL }}/{{ article.prev_article.url}}">{{ article.prev_article.title }}</a></p>
     {% endif %}
-
-    {% if MAILCHIMP %}
-    {% include 'mailchimp.html' %}
+    {% if article.next_article %}
+    <p align="right"><a href="{{ SITEURL }}/{{ article.next_article.url}}">{{ article.next_article.title }}</a> <i>: Next Post</i></p>
     {% endif %}
-
-    <!-- Back to home
-    ================================================================== -->
     <div class="back-to-home">
-      <a href="/">← Back to Home</a>
+        <a href="/blog/">← Back to Blog</a>
     </div>
     <hr class="small"></hr>
-  </div>
-{% endblock %}
+</div>
+{% include 'disqus.html' %} {% endblock %}
