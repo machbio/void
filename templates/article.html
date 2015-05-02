@@ -34,8 +34,8 @@
   <!-- Article Headers
   ================================================================== -->
   <h1 class="article-title"><a href="/{{ article.url }}" title="Permalink to {{ article.title }}">{{article.title}}</a></h1>
-  <h5 class="article-date">{{ article.date|strftime('%B %d, %Y') }}
-    {% if article.tags %} | Tags: {% for tag in article.tags %}
+  <h5 class="article-date"><strong>{{ article.date|strftime('%B %d, %Y') }}</strong>
+    {% if article.tags %} | {% for tag in article.tags %}
         <a class="tag" href="/{{ tag.url }}" rel="tag" title="Posts tagged with {{ article.tag }}">{{ tag }}</a>
       {% endfor %}
     {% endif %}
@@ -50,7 +50,7 @@
 
   <div class="article-sharing">
     <hr class="small"></hr>
-    {% if TWITTER_NAME %}
+    {% if not TWITTER_NAME %}
     <!-- Twitter Sharing
     ================================================================== -->
     <a href="https://twitter.com/share" class="twitter-share-button" data-via="{{ TWITTER_NAME }}">Tweet</a>
