@@ -1,0 +1,6 @@
+[submodule "static/reveal.js"]
+	path = static/reveal.js
+	url = git@github.com:hakimel/reveal.js.git
+[submodule "static/Tipue-Search"]
+	path = static/Tipue-Search
+	url = git@github.com:machbio/Tipue-Search.git

@@ -3,21 +3,20 @@
 {% block metadesc %}{{ page.description|e }}{% endblock %} 
 
 {% block header %}
-<link rel="stylesheet" href="/theme/reveal/reveal.css">
-
-<link rel="stylesheet" href="/theme/reveal/theme/{{ page.theme or 'white' }}.css" id="theme">
+<link rel="stylesheet" href="/theme/reveal.js/css/reveal.css">
+<link rel="stylesheet" href="/theme/reveal.js/css/theme/{{ page.theme or 'white' }}.css" id="theme">
 <!-- Code syntax highlighting -->
-<!-- <link rel="stylesheet" href="/theme/reveal/lib/css/zenburn.css"> -->
+<link rel="stylesheet" href="/theme/reveal.js/lib/css/zenburn.css">
 <!-- Printing and PDF exports -->
 <script>
 var link = document.createElement('link');
 link.rel = 'stylesheet';
 link.type = 'text/css';
-link.href = window.location.search.match(/print-pdf/gi) ? '/theme/reveal/pdf.css' : '/theme/reveal/paper.css';
+link.href = window.location.search.match(/print-pdf/gi) ? '/theme/reveal.js/css/print/pdf.css' : '/theme/reveal.js/css/print/paper.css';
 document.getElementsByTagName('head')[0].appendChild(link);
 </script>
 <!--[if lt IE 9]>
-		<script src="lib/js/html5shiv.js"></script>
+		<script src="/theme/reveal.js/lib/js/html5shiv.js"></script>
 		<![endif]-->
 {% endblock %}
 
@@ -27,8 +26,8 @@ document.getElementsByTagName('head')[0].appendChild(link);
     {{ page.content }}
 </div>        
 
-<script src="/theme/reveal/lib/js/head.min.js"></script>
-<script src="/theme/reveal/js/reveal.js"></script>
+<script src="/theme/reveal.js/lib/js/head.min.js"></script>
+<script src="/theme/reveal.js/js/reveal.js"></script>
 <script>
 // Full list of configuration options available at:
 // https://github.com/hakimel/reveal.js#configuration
@@ -46,22 +45,22 @@ Reveal.initialize({
 
     // Optional reveal.js plugins
     dependencies: [{
-        src: '/theme/reveal/lib/js/classList.js',
+        src: '/theme/reveal.js/lib/js/classList.js',
         condition: function() {
             return !document.body.classList;
         }
     }, {
-        src: '/theme/reveal/plugin/markdown/marked.js',
+        src: '/theme/reveal.js/plugin/markdown/marked.js',
         condition: function() {
             return !!document.querySelector('[data-markdown]');
         }
     }, {
-        src: '/theme/reveal/plugin/markdown/markdown.js',
+        src: '/theme/reveal.js/plugin/markdown/markdown.js',
         condition: function() {
             return !!document.querySelector('[data-markdown]');
         }
     }, {
-        src: '/theme/reveal/plugin/highlight/highlight.js',
+        src: '/theme/reveal.js/plugin/highlight/highlight.js',
         async: true,
         condition: function() {
             return !!document.querySelector('pre code');
@@ -70,10 +69,10 @@ Reveal.initialize({
             hljs.initHighlightingOnLoad();
         }
     }, {
-        src: '/theme/reveal/plugin/zoom-js/zoom.js',
+        src: '/theme/reveal.js/plugin/zoom-js/zoom.js',
         async: true
     }, {
-        src: '/theme/reveal/plugin/notes/notes.js',
+        src: '/theme/reveal.js/plugin/notes/notes.js',
         async: true
     }]
 });
